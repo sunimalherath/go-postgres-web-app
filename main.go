@@ -1,6 +1,7 @@
 package main
 
 import (
+	"database/sql"
 	"html/template"
 	"net/http"
 
@@ -17,6 +18,12 @@ type Book struct {
 
 func init() {
 	tpl = template.Must(template.ParseGlob("templates/*.gohtml"))
+
+	db, err := sql.Open("postgres", "postgres://bookeeper:pass123@localhost/bookstore?sslmode=disable")
+	if err != nil {
+		panic(err)
+	}
+	defer db.Close()
 }
 
 func main() {
