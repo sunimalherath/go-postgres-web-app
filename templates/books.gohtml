@@ -8,5 +8,11 @@
 </head>
 <body>
     <h2>List of Books</h2>
+    <ul>
+        {{ range .}}
+            <li>{{ .isbn }} - {{ .title }}</li>
+        {{ end }}   
+    </ul>
+    
 </body>
 </html>
